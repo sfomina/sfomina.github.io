@@ -18,7 +18,7 @@ public class Capacitor {
     _distance = distance;
     double permitConst = 8.85 * Math.pow(10,-12);
     double constant = 1/(4 * Math.PI * permitConst); 
-    _capacitance = (constant * permitConst * _area)/(_distance));
+    _capacitance = (constant * permitConst * _area)/(_distance);
   }
   
   public float getX(){
@@ -32,10 +32,9 @@ public class Capacitor {
   public void draw(){
     float radius = _distance/2; 
     noStroke();
-    fill(255,255,0);
+    fill(104,162,255);
     rect(_xcor, _ycor + radius, _width, _height);
-    stroke(0);
-    fill(255,255,0);
+    fill(104,162,255);
     rect(_xcor, _ycor - radius, _width, _height);
     stroke(0);
     //fill(255, 255, 0);
