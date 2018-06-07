@@ -37,6 +37,8 @@ public class Capacitor {
     fill(104,162,255);
     rect(_xcor, _ycor - radius, _width, _height);
     stroke(0);
+    println (_ycor + radius);
+    println (_ycor - radius);
     //fill(255, 255, 0);
     //ellipse(_xcor, _ycor, 2*radius, 2*radius);
     //stroke(0);
