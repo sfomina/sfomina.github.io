@@ -33,7 +33,7 @@ public class Charge {
   }
   
   public void draw(){
-    float radius = 8; 
+    float radius = 4; 
     noStroke();
     fill(255, 255, 0);
     ellipse(_xcor, _ycor, 2*radius, 2*radius);

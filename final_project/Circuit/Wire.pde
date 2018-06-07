@@ -9,9 +9,9 @@ public class Wire {
   private Wire _next;
   private float _Qdensity;
   private ArrayList<Charge> _charges;
-  private Battery _batteryNext;
-  private Capacitor _capacitorNext;
-  private Resistor _resistorNext;
+  //private Battery _bNext;
+  private Capacitor _cNext;
+  private Resistor _rNext;
   
   //Constructors 
   public Wire(float startX, float startY, float endX, float endY, boolean hasCurrent, Wire next){
@@ -22,12 +22,12 @@ public class Wire {
     _hasCurrent = hasCurrent;
     _next = next;
     _Qdensity = 0.02;
-    _batteryNext = null;
-    _capacitorNext = null;
-    _resistorNext = null;
+    //_bNext = bnext;
+    _cNext = null;
+    _rNext = null;
     _charges = new ArrayList<Charge>(); 
     int numCharges = (int) Math.round(lineLen() * _Qdensity);
-    float spaces = (float)(lineLen()/numCharges); 
+    int spaces = (int)(lineLen()/numCharges); 
     for (int x = 0; x < numCharges; x += 1){
       int dx;
       int dy;
@@ -57,7 +57,7 @@ public class Wire {
   }
   
   public void drawWire(){
-    strokeWeight(20);
+    strokeWeight(8);
     line(_startX, _startY, _endX, _endY); 
   }
   
@@ -73,11 +73,14 @@ public class Wire {
   }
   
   public void checkNext(){
+   //println(_charges); 
    for (int x = 0; x < _charges.size(); x+= 1){
      if (_charges.get(x).getX() == _endX && _charges.get(x).getY() == _endY){
-       _next.addCharge(_endX, _endY);
-       println(_next);
+       //println(_next);
        _charges.remove(x);
+       //delay(20);
+       //println ("WOW");
+       _next.addCharge(_endX, _endY);
        x-=1;
      }
    }

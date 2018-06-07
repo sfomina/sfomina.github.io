@@ -1,19 +1,23 @@
 Wire _topWire;
-Wire _leftWire;
+Wire _leftWireA;
+Wire _leftWireB;
 Wire _botWire;
 Wire _rightWire;
+Battery _battery; 
 Capacitor _capa;
-//Charge _Q; 
+
 
 void setup() {
   size(500, 500);
   background(255, 255,255); 
-  _capa = new Capacitor(373,200,60,10,20);
-  _topWire = new Wire(100, 125, 400, 125, null, true, _rightWire);
-  _leftWire = new Wire(100, 325, 100, 125, null, true, _topWire);
-  _botWire = new Wire(400, 325, 100,325, null, true, _leftWire);
-  _rightWire = new Wire(400, 125, 400, 325, _capa, true, _botWire);
+  _topWire = new Wire(100, 125, 400, 125, true, _rightWire);
+  _leftWireB = new Wire(100, 190, 100, 125, true, _topWire);
+  _leftWireA = new Wire(100, 325, 100, 210, true, _leftWireB);
+  _botWire = new Wire(400, 325, 100,325, true, _leftWireA); 
+  _rightWire = new Wire(400, 125, 400, 325, true, _botWire);
   _topWire.setNext(_rightWire);
+  _battery = new Battery(10, 100, 210 , 190); 
+  _capa = new Capacitor(373,200,60,10,20);
 }
 
 
@@ -22,12 +26,14 @@ void draw() {
   _topWire.drawWire();
   _rightWire.drawWire();
   _botWire.drawWire();
-  _leftWire.drawWire();
+  _leftWireA.drawWire();
+  _leftWireB.drawWire();
+  _battery.drawBattery();
   _topWire.drawCharges();
   _rightWire.drawCharges();
   _botWire.drawCharges();
-  _leftWire.drawCharges();
-  _rightWire.drawCapacitor();
+  _leftWireA.drawCharges();
+  _leftWireB.drawCharges();
   int m = millis();
   //fill(m % 255);
   //rect(25, 25, 50, 50);
