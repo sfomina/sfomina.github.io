@@ -1,7 +1,12 @@
 import java.util.Arrays;
 
+public static float MAXI = 0.05; 
+public static float TIMECONSTANT = 0.02;
+
+
 public class Charge {
   
+  private float time = 0; 
   private float _dx;
   private float _dy; 
   private float _xcor;
@@ -30,6 +35,30 @@ public class Charge {
   public void move(){
     _xcor += _dx; 
     _ycor += _dy;
+    
+    if (_dx == 0 && _dy > 0 ){
+      _dy = 100 *calcCurrent();
+      //println(_dy);
+      //exit();
+      
+    }
+    else if (_dx == 0 && _dy < 0 ){
+      _dy = -100 * calcCurrent();
+    }
+    else if (_dy == 0 && _dx > 0){
+      _dx = 100 * calcCurrent();; 
+    }
+    else {
+      _dx = -100 * calcCurrent();
+    }
+    
+    time += 0.001; 
+  }
+  
+  public float calcCurrent(){
+    
+    //println( MAXI*exp( -1 * time/TIMECONSTANT));
+    return MAXI*exp( -1 * time/TIMECONSTANT);
   }
   
   public void draw(){

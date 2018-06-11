@@ -7,6 +7,11 @@ Wire _rightWireB;
 Battery _battery; 
 Capacitor _capa;
 
+//5 volt battery, max voltage of capacitor
+//100 ohm resistor 
+//200 micro farad capacitor 
+//RC = time constant = 2 * 10^-2 s
+// I max = 0.05 Amps 
 
 void setup() {
   size(500, 500);
@@ -15,7 +20,7 @@ void setup() {
   _leftWireB = new Wire(100, 190, 100, 125, true, _topWire);
   _leftWireA = new Wire(100, 325, 100, 210, true, _leftWireB);
   _botWire = new Wire(400, 325, 100,325, true, _leftWireA); 
-  _rightWireB = new Wire(400, 220, 400, 325, true, _botWire);
+  _rightWireB = new Wire(400, 220, 400, 325,true, _botWire);
   _rightWireA = new Wire(400,125, 400,190, true, _rightWireB);
   _topWire.setNext(_rightWireA);
   _battery = new Battery(10, 100, 210 , 190); 
@@ -26,19 +31,22 @@ void setup() {
 void draw() { 
   background(255,255,255);
   _topWire.drawWire();
-  _rightWireA.drawWire();
+  _rightWireA.drawWire(); 
   _rightWireB.drawWire();
   _botWire.drawWire();
   _leftWireA.drawWire();
    _leftWireB.drawWire();
-  _battery.drawBattery();
+ 
   _capa.draw();
+  _battery.drawBattery();
   _topWire.drawCharges();
   _rightWireA.drawCharges();
   _rightWireB.drawCharges();
   _botWire.drawCharges();
   _leftWireA.drawCharges();
   _leftWireB.drawCharges();
+   
+  //println(_rightWireA.getNumCharges());
   
   int m = millis();
   //fill(m % 255);

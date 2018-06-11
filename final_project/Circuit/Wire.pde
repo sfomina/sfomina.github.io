@@ -29,11 +29,11 @@ public class Wire {
     int numCharges = (int) Math.round(lineLen() * _Qdensity);
     int spaces = (int)(lineLen()/numCharges); 
     for (int x = 0; x < numCharges; x += 1){
-      int dx;
-      int dy;
+      float dx;
+      float dy;
       if (_startX == _endX){
         dx = 0;
-        dy = 1;
+        dy = 5;
         if (_startY > _endY){
           _charges.add(new Charge(_startX,_startY - spaces*x, dx, -1*dy)); 
         }
@@ -43,7 +43,7 @@ public class Wire {
 
       }
       else {
-        dx = 1;
+        dx = 5;
         dy = 0;
         if (_startX > _endX){
           _charges.add(new Charge(_startX - spaces*x,_startY, -1* dx, dy)); 
@@ -75,11 +75,23 @@ public class Wire {
   public void checkNext(){
    //println(_charges); 
    for (int x = 0; x < _charges.size(); x+= 1){
-     if (_charges.get(x).getX() == _endX && _charges.get(x).getY() == _endY){
-       //println(_next);
+     if (_endX > _startX && _charges.get(x).getX() >= _endX && _charges.get(x).getY() == _endY){
        _charges.remove(x);
-       //delay(20);
-       //println ("WOW");
+       _next.addCharge(_endX, _endY);
+       x-=1;
+     }
+     else if (_endY > _startY && _charges.get(x).getX() == _endX && _charges.get(x).getY() >= _endY){
+       _charges.remove(x);
+       _next.addCharge(_endX, _endY);
+       x-=1;
+     }
+     else if (_startX > _endX && _charges.get(x).getX() <= _endX && _charges.get(x).getY()== _endY ){ 
+       _charges.remove(x);
+       _next.addCharge(_endX, _endY);
+       x-=1;
+     }
+     else if (_startY > _endY && _charges.get(x).getX() == _endX && _charges.get(x).getY() <= _endY ){ 
+       _charges.remove(x);
        _next.addCharge(_endX, _endY);
        x-=1;
      }
@@ -111,11 +123,11 @@ public class Wire {
   
  
   public void addCharge(float x,float y){
-    int dx;
-    int dy;
+    float dx;
+    float dy;
     if (_startX == _endX){
       dx = 0;
-      dy = 1;
+      dy = 5;
       if (_startY > _endY){
         _charges.add(new Charge(x,y, dx, -1*dy)); 
       }
@@ -125,7 +137,7 @@ public class Wire {
 
     }
     else {
-      dx = 1;
+      dx = 5;
       dy = 0;
       if (_startX > _endX){
         _charges.add(new Charge(x,y, -1* dx, dy)); 
@@ -139,7 +151,8 @@ public class Wire {
   }
 
   
-  
-  
+public int getNumCharges(){
+   return _charges.size();
+}
   
 }
