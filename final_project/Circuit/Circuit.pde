@@ -51,13 +51,13 @@ void draw() {
    
   //println(_rightWireA.getNumCharges());
   
-  int m = millis();
+  //int m = millis();
   //fill(m % 255);
   //rect(25, 25, 50, 50);
   //attempt to graph
-  ////Draw Axes
-  //line(width/2 + 30,30, width/2 + 30, height/2);
-  //line(width/2 + 30, height/2, width - 30, height/2);
+  //Draw Axes
+  //line(width/2 + 30,470, width/2 + 30, height/2 + 80);
+  //line(width/2 + 30, height/2 + 240, width - 30, height/2 + 240);
   
   ////Labels
   //fill(255, 0, 0); 
@@ -67,6 +67,6 @@ void draw() {
   //float r = (width/2+30 - (width/2 + 30))/5; 
   ////Draw Graph
   //for (float i = 0; i < r; i += 0.2){
-  // point(i * 5 + width/2 + 30, height/2 - graph(i) * 130000);
-  //}
+  // point(i * 5 + width/2 + 30, height/2 - 5 * 130000);
+  }
 }
