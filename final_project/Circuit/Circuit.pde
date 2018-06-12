@@ -13,7 +13,7 @@ Resistor _res;
 //200 micro farad capacitor 
 //RC = time constant = 2 * 10^-2 s
 // I max = 0.05 Amps 
-
+                                                                                                 
 void setup() {
   size(500, 500);
   background(255, 255,255); 
@@ -54,4 +54,19 @@ void draw() {
   int m = millis();
   //fill(m % 255);
   //rect(25, 25, 50, 50);
+  //attempt to graph
+  ////Draw Axes
+  //line(width/2 + 30,30, width/2 + 30, height/2);
+  //line(width/2 + 30, height/2, width - 30, height/2);
+  
+  ////Labels
+  //fill(255, 0, 0); 
+  //text("Time", 3*width/4-30, height/2+25);
+  //text("Capacity", width/2-75, height/4+25);
+  ////HScrollbar hs = new HScrollbar(width/2+30, height/2+75, width/2-100, 16, 16);
+  //float r = (width/2+30 - (width/2 + 30))/5; 
+  ////Draw Graph
+  //for (float i = 0; i < r; i += 0.2){
+  // point(i * 5 + width/2 + 30, height/2 - graph(i) * 130000);
+  //}
 }

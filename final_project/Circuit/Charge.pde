@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
-public static float MAXI = 0.05; 
-public static float TIMECONSTANT = 0.02;
+public static double MAXI = 0.05; 
+public static double TIMECONSTANT = 0.02;
 
 
 public class Charge {
@@ -58,7 +58,8 @@ public class Charge {
   public float calcCurrent(){
     
     //println( MAXI*exp( -1 * time/TIMECONSTANT));
-    return MAXI*exp( -1 * time/TIMECONSTANT);
+    return (float)(MAXI * Math.pow(Math.E, -1 * time/TIMECONSTANT));
+    //return (float)(MAXI*exp((float)(-1 * time/TIMECONSTANT)));
   }
   
   public void draw(){
