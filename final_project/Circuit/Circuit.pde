@@ -6,6 +6,7 @@ Wire _rightWireA;
 Wire _rightWireB;
 Battery _battery; 
 Capacitor _capa;
+Resistor _res;
 
 //5 volt battery, max voltage of capacitor
 //100 ohm resistor 
@@ -25,6 +26,7 @@ void setup() {
   _topWire.setNext(_rightWireA);
   _battery = new Battery(10, 100, 210 , 190); 
   _capa = new Capacitor(370,200,60,10,20);
+  _res = new Resistor(240,125, 100, 260, 140);
 }
 
 
@@ -37,6 +39,7 @@ void draw() {
   _leftWireA.drawWire();
    _leftWireB.drawWire();
  
+   _res.draw();
   _capa.draw();
   _battery.drawBattery();
   _topWire.drawCharges();
